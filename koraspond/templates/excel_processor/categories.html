@@ -1,0 +1,26 @@
+{% extends 'excel_processor/base.html' %}
+
+{% block content %}
+<div style="display: grid; place-items: center;">
+    <h1>All Categories</h1>
+    <br>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for category in categories %}
+          <tr>
+            <td>{{ category.id }}</td>
+            <td>{{ category.name }}</td>
+            <td><a href="{% url 'products_by_category' category.id %}" class="btn btn-primary">View Products</a></td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+</div>
+{% endblock %}

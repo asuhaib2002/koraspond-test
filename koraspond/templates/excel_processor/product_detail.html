@@ -1,0 +1,27 @@
+{% extends 'excel_processor/base.html' %}
+
+{% block content %}
+
+<div style="display:block;">
+<h1>{{ product.name }}</h1>
+<div style="max-height: 80vh; overflow-y: scroll;">
+<table class="table">
+    <thead>
+        <tr>
+            <th>Attribute</th>
+            <th>Value</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for attribute in attributes %}
+            <tr>
+                <td>{{ attribute.key }}</td>
+                <td>{{ attribute.value }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+<a href="{% url 'home' %}" class="btn btn-primary">Home</a>
+</div>
+{% endblock %}

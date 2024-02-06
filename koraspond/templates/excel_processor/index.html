@@ -1,0 +1,18 @@
+{% extends 'excel_processor/base.html' %}
+
+{% block content %}
+
+<div class="center-content">
+    <h1>Welcome to My Web App</h1>
+    <p>This web application was made for the coding interview at Koraspond</p> 
+    <div class="row justify-content-center">
+        <div class="col-sm-4 text-left">
+			<a href="{% url 'categories' %}" class="btn btn-primary">Check Products</a>
+		</div>
+		<div class="col-sm-4 text-left">
+			<a href="{% url 'upload' %}" class="btn btn-primary">Upload CSV</a>
+		</div>
+    </div>
+</div>
+
+{% endblock content %}

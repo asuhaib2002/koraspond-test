@@ -1,0 +1,48 @@
+{% extends 'excel_processor/base.html' %}
+    {% block content %}
+    <div>
+
+        <h1>Upload Excel File</h1>
+        <form method="post" enctype="multipart/form-data" id="file-upload-form">
+            {% csrf_token %}
+        {{ excel_form.as_p }}
+        <button class="btn btn-primary" type="submit">Upload</button>
+    </form>
+    
+    <form method="post" id="category-create-form" style="display: none;">
+        {% csrf_token %}
+        {{ category_form.as_p }}
+        <button class="btn btn-primary" type="submit">Create Category</button>
+        {% for error in category_form.non_field_errors %}
+            <p>{{ error }}</p>
+        {% endfor %}
+    </form>
+    <br>
+    <div class="row justify-content-center">
+    <div class="col-sm-6 text-left">
+        <button class="btn btn-primary" id="togglebtn" onclick="toggleForms()">Create New Category</button>
+    </div>
+    <div class="col-sm-6 text-left">
+        <a href="{% url 'home' %}" class="btn btn-primary">Home</a>
+    </div>
+</div>
+    
+</div>
+<script>
+    function toggleForms() {
+        var fileUploadForm = document.getElementById("file-upload-form");
+        var categoryCreateForm = document.getElementById("category-create-form");
+        var togglebtn = document.getElementById("togglebtn");
+        togglebtn.innerHTML = fileUploadForm.style.display === "none" ? "Create New Category" : "Upload Excel File";
+        
+        if (fileUploadForm.style.display === "none") {
+            fileUploadForm.style.display = "block";
+            categoryCreateForm.style.display = "none";
+        } else {
+            fileUploadForm.style.display = "none";
+            categoryCreateForm.style.display = "block";
+        }
+    }
+</script>
+
+{% endblock content %}

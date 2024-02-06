@@ -1,0 +1,9 @@
+{% extends 'excel_processor/base.html' %}
+
+{% block content %}
+<div style="display: grid; place-items: center;">
+    <h1>Upload Successful!</h1>
+    <a href="{% url 'upload' %}" class="btn btn-primary">Upload Another File</a>
+</div>
+{% endblock %}
+
